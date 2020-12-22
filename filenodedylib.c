@@ -11,8 +11,12 @@ void install()
     printf("~~~hello, world! From a node dylib - running test.js!!\n");
     // int argc=3;
     // char *argv[4] = {"node", "-e", node_string, NULL};
-    int argc=2;
-    char *argv[4] = {"node", "test.js", NULL};
+    
+    char node_string_address[100];
+    // sprintf(node_string_address, "%08x", node_string);
+    sprintf(node_string_address, "%lx", node_string);
+    int argc=3;
+    char *argv[4] = {"node", "test.js", node_string_address, NULL};
 
     int ret = node::Start(argc, argv);
     // in src/node.h : NODE_EXTERN int Start(int argc, char* argv[]);
