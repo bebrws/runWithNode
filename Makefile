@@ -9,8 +9,12 @@ testp: testp.c
 dynlib.dylib: dynlib.c
 	/usr/local/Cellar/llvm/11.0.0/bin/clang  dynlib.c -fpic -shared -Wl,-all_load -o dynlib.dylib
 
+node:
+	git clone https://github.com/nodejs/node.git
+	cd node && git checkout v14.15.3 && cd ..
 
 node/out/Release/libnode.a: node
+	cd node && ./configure && cd ..
 	make -C node
 
 bradsnode.dylib: node/out/Release/libnode.a bradsdylib.c
