@@ -16,9 +16,3 @@ void install()
     printf("Node returned %d\n", ret);
 }
 
-void  entrypoint(const char * data, int * stay_resident) {
-// void entrypoint(const char * arg) {
-    printf("In entrypoint\n");
-  printf("Dylib loaded by inject. In entry point. Passed argument %s\n", data);
-  //install();
-}
